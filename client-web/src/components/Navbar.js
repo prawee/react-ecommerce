@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-26 03:44:29 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-26 04:06:19
+ * @Last Modified time: 2019-07-26 04:17:57
  */
 import React from 'react';
 import { Box, Text, Heading, Image } from 'gestalt';
@@ -19,14 +19,14 @@ const Navbar = () => (
     shape="roundedBottom"
   >
     {/* Sign In Link */}
-    <NavLink to="/signin">
+    <NavLink activeClassName="active" to="/signin">
       <Text size="x1" color="white">
         Sign In
       </Text>
     </NavLink>
 
     {/* Title and Logo */}
-    <NavLink to="/">
+    <NavLink activeClassName="active" exact to="/">
       <Box display="flex" alignItems="center">
         <Box margin={2} height={50} width={50}>
           <Image
@@ -43,7 +43,7 @@ const Navbar = () => (
     </NavLink>
 
     {/* Sign Up Link */}
-    <NavLink to="/signup">
+    <NavLink activeClassName="active" to="/signup">
       <Text size="x1" color="white">
         Sign Up
       </Text>

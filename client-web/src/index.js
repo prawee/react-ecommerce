@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import 'gestalt/dist/gestalt.css';
 import App from './components/App';
+import Navbar from './components/Navbar';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import CheckOut from './components/CheckOut';
@@ -14,12 +15,15 @@ import * as serviceWorker from './serviceWorker';
 
 const Root = () => (
   <Router>
-    <Switch>
-      <Route component={App} exact path="/" />
-      <Route component={SignIn} path="/signin" />
-      <Route component={SignUp} path="/signup" />
-      <Route component={CheckOut} path="/checkout" />
-    </Switch>
+    <React.Fragment>
+      <Navbar />
+      <Switch>
+        <Route component={App} exact path="/" />
+        <Route component={SignIn} path="/signin" />
+        <Route component={SignUp} path="/signup" />
+        <Route component={CheckOut} path="/checkout" />
+      </Switch>
+    </React.Fragment>
   </Router>
 )
 

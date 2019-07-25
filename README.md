@@ -11,3 +11,11 @@ My Practise coding for create a fullstack ecommerce app using React, GraphQL, St
 - Sendgrid
 - mLab
 - React Developer Tools(chrome extenstion)
+
+## Ingredient
+
+- Client with Expo
+
+## Reference
+
+<https://github.com/reedbarger/ecommerce-react-graphql-stripe>

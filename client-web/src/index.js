@@ -5,7 +5,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import './index.css';
+import 'gestalt/dist/gestalt.css';
 import App from './components/App';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';

@@ -14,7 +14,8 @@ My Practise coding for create a fullstack ecommerce app using React, GraphQL, St
 
 ## Ingredient
 
-- Client with Expo
+- Client
+  - Web (React) <https://github.com/prawee/osx/tree/master/react>
 
 ## Reference
 

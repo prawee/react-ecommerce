@@ -16,6 +16,9 @@ My Practise coding for create a fullstack ecommerce app using React, GraphQL, St
 
 - Client
   - Web (React) <https://github.com/prawee/osx/tree/master/react>
+- Server
+  - Database (MongoDB) <https://cloud.mongodb.com>
+  - Strapi <https://github.com/prawee/osx/tree/master/strapi>
 
 ## Reference
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Box, Heading, Card, Image, Text, SearchField, Icon, Spinner } from 'gestalt';
 import { Link } from 'react-router-dom';
+import Loader from './Loader';
 import './App.css';
 import Strapi from 'strapi-sdk-javascript/build/main';
 
@@ -136,10 +137,11 @@ class App extends Component {
             </Box>
           ))}
         </Box>
-        <Spinner 
+        {/* <Spinner 
           show={loadingBrands} 
           accessibilityLabel="Loading Spinner" 
-        />
+        /> */}
+        <Loader show={loadingBrands} />
       </Container>
     );
   }

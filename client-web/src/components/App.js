@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Box, Heading, Card, Image, Text, SearchField } from 'gestalt';
+import { Container, Box, Heading, Card, Image, Text, SearchField, Icon } from 'gestalt';
 import { Link } from 'react-router-dom';
 import './App.css';
 import Strapi from 'strapi-sdk-javascript/build/main';
@@ -43,7 +43,7 @@ class App extends Component {
   }
 
   render() {
-    const { brands } = this.state;
+    const { brands, searchTerm } = this.state;
     return (
       <Container>
         {/* Brands search field */}
@@ -54,6 +54,14 @@ class App extends Component {
             onChange={this.handleChange}
             placeholder="Search Brands"
           />
+          <Box margin={3}>
+            <Icon
+              icon="filter"
+              color={ searchTerm ? 'orange' : 'gray'}
+              size={20}
+              accessibilityLabel="Filter"
+            />
+          </Box>
         </Box>
         
 

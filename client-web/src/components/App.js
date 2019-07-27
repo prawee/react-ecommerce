@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Box, Heading, Card, Image, Text, SearchField, Icon, Spinner } from 'gestalt';
+import { Container, Box, Heading, Card, Image, Text, SearchField, Icon } from 'gestalt';
 import { Link } from 'react-router-dom';
 import Loader from './Loader';
 import './App.css';

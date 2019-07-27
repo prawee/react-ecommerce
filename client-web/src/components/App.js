@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Box, Heading, Card, Image, Text } from 'gestalt';
+import { Container, Box, Heading, Card, Image, Text, SearchField } from 'gestalt';
 import { Link } from 'react-router-dom';
 import './App.css';
 import Strapi from 'strapi-sdk-javascript/build/main';
@@ -41,6 +41,12 @@ class App extends Component {
     const { brands } = this.state;
     return (
       <Container>
+        {/* Brands search field */}
+        <Box display="flex" justifyContent="center" marginTop={4}>
+          <SearchField />
+        </Box>
+        
+
         {/* brands Section */}
         <Box
           display="flex"

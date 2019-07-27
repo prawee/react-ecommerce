@@ -9,7 +9,8 @@ const strapi = new Strapi(apiUrl);
 
 class App extends Component {
   state = {
-    brands: []
+    brands: [],
+    searchTerm: ''
   }
 
   async componentDidMount() {
@@ -37,13 +38,22 @@ class App extends Component {
     }
   }
 
+  handleChange = ({ value }) => {
+    this.setState({ searchTerm: value });
+  }
+
   render() {
     const { brands } = this.state;
     return (
       <Container>
         {/* Brands search field */}
         <Box display="flex" justifyContent="center" marginTop={4}>
-          <SearchField />
+          <SearchField 
+            id="searchField"
+            accessibilityLabel="Brands Search Field"
+            onChange={this.handleChange}
+            placeholder="Search Brands"
+          />
         </Box>
         
 

@@ -44,7 +44,10 @@ class App extends Component {
 
   filteredBrands = ({ searchTerm, brands }) => {
     return brands.filter(brand => {
-      return brand.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return (
+        brand.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        brand.description.toLowerCase().includes(searchTerm.toLowerCase())
+      );
     })
   }
 
@@ -57,6 +60,7 @@ class App extends Component {
           <SearchField 
             id="searchField"
             accessibilityLabel="Brands Search Field"
+            value={searchTerm}
             onChange={this.handleChange}
             placeholder="Search Brands"
           />

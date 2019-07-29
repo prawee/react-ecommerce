@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-29 14:27:32 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-30 03:45:11
+ * @Last Modified time: 2019-07-30 04:45:54
  */
 import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
@@ -10,7 +10,8 @@ import { Box, Heading, Text, Image, Card, Button, Mask, IconButton } from 'gesta
 import { calculatePrice, getCart, setCart } from '../utils';
 import { Link } from 'react-router-dom';
 
-const apiUrl = process.env.API_URL || 'http://localhost:3000';
+// const apiUrl = process.env.API_URL || 'http://localhost:3000';
+const apiUrl ='http://devsecret.com:3000';
 const strapi = new Strapi(apiUrl);
 
 class Brew extends React.Component {

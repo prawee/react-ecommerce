@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-26 03:20:47 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-30 03:45:15
+ * @Last Modified time: 2019-07-30 04:45:45
  */
 import React from 'react';
 import { Container, Box, Heading, TextField, Text } from 'gestalt';
@@ -11,6 +11,7 @@ import { getCart, calculatePrice } from '../utils';
 // import Strapi from 'strapi-sdk-javascript/build/main';
 
 // const apiUrl = process.env.API_URL || 'http://localhost:3000';
+// const apiUrl ='http://devsecret.com:3000';
 // const strapi = new Strapi(apiUrl);
 
 class CheckOut extends React.Component {

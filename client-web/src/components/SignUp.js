@@ -2,10 +2,11 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-26 03:19:59 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 22:54:48
+ * @Last Modified time: 2019-07-29 23:05:41
  */
 import React from 'react';
 import { Container, Box, Button, Heading, Text, TextField } from 'gestalt';
+import ToastMessage from './ToastMessage';
 
 class SignUp extends React.Component {
 
@@ -25,8 +26,9 @@ class SignUp extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     
-    if (!this.isFormEmpty(this.state)) {
+    if (this.isFormEmpty(this.state)) {
       this.showToast('Fill in all fields');
+      return;
     }
     console.log('submited');
   }
@@ -41,6 +43,8 @@ class SignUp extends React.Component {
   }
 
   render() {
+    const { toastMessage, toast } = this.state;
+
     return (
       <Container>
         <Box
@@ -110,6 +114,7 @@ class SignUp extends React.Component {
             />
           </form>
         </Box>
+        <ToastMessage show={toast} message={toastMessage} />
       </Container>
     )
   }

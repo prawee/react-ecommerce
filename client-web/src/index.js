@@ -11,6 +11,8 @@ import Navbar from './components/Navbar';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import CheckOut from './components/CheckOut';
+import Brew from './components/Brew';
+
 import * as serviceWorker from './serviceWorker';
 
 const Root = () => (
@@ -22,6 +24,7 @@ const Root = () => (
         <Route component={SignIn} path="/signin" />
         <Route component={SignUp} path="/signup" />
         <Route component={CheckOut} path="/checkout" />
+        <Route component={Brew} path="/:brandId" />
       </Switch>
     </React.Fragment>
   </Router>

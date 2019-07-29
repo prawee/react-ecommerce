@@ -2,12 +2,12 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-29 14:27:32 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 20:15:42
+ * @Last Modified time: 2019-07-29 22:21:47
  */
 import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
 import { Box, Heading, Text, Image, Card, Button, Mask, IconButton } from 'gestalt';
-import { calculatePrice } from '../utils';
+import { calculatePrice, getCart, setCart } from '../utils';
 import { Link } from 'react-router-dom';
 
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
@@ -46,9 +46,10 @@ class Brew extends React.Component {
       // console.log(response);
       this.setState({
         brews: response.data.brand.brews,
-        brand: response.data.brand.name
+        brand: response.data.brand.name,
+        cartItems: getCart()
       });
-      console.log(this.state);
+      // console.log(this.state);
     } catch (err) {
       console.error(err);
     }
@@ -62,17 +63,17 @@ class Brew extends React.Component {
         ...brew,
         quantity: 1
       });
-      this.setState({ cartItems: updatedItems });
+      this.setState({ cartItems: updatedItems }, () => setCart(updatedItems));
     } else {
       const updatedItems = [...this.state.cartItems];
       updatedItems[alreadyInCart].quantity +=1;
-      this.setState({ cartItems: updatedItems });
+      this.setState({ cartItems: updatedItems }, () => setCart(updatedItems));
     }
   }
 
   deleteItemFromCart = itemToDeleteId => {
     const filteredItems = this.state.cartItems.filter(item => item._id !== itemToDeleteId);
-    this.setState({ cartItems: filteredItems });
+    this.setState({ cartItems: filteredItems }, () => setCart(filteredItems));
   }
 
   render() {

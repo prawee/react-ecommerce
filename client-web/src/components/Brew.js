@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-29 14:27:32 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 17:50:45
+ * @Last Modified time: 2019-07-29 20:01:20
  */
 import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
@@ -54,8 +54,8 @@ class Brew extends React.Component {
   }
 
   addToCart = brew => {
-    const alreadyInCart = this.state.cartItems.findIndex(item => item._id === brew);
-
+    const alreadyInCart = this.state.cartItems.findIndex(item => item._id === brew._id);
+    
     if (alreadyInCart === -1) {
       const updatedItems = this.state.cartItems.concat({
         ...brew,
@@ -157,7 +157,15 @@ class Brew extends React.Component {
                 {cartItems.length} items selected
               </Text>
 
-              {/* Cart Items (will add) */}
+              {/* Cart Items */}
+              {cartItems.map(item =>(
+                <Box key={item._id} display="flex" alignItems="center">
+                  <Text>
+                    {item.name} x {item.quantity} - ${(item.quantity * item.price).toFixed(2)}
+                  </Text>
+                </Box>
+              ))}
+              
               <Box display="flex" alignItems="center" justifyContent="center" direction="column" >
                 <Box margin={2}>
                   {cartItems.length === 0 && (

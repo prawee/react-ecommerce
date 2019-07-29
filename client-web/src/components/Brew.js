@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-29 14:27:32 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 17:32:34
+ * @Last Modified time: 2019-07-29 17:37:21
  */
 import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
@@ -119,7 +119,7 @@ class Brew extends React.Component {
                   <Text color="orchid">${brew.price}</Text>
                   <Box marginTop={2}>
                     <Text bold size="xl">
-                      <Button color="blue" text="Add to Cart" />
+                      <Button onClick={() => this.addToCart(brew)} color="blue" text="Add to Cart" />
                     </Text>
                   </Box>
                 </Box>

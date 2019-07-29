@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-26 03:20:47 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-30 03:39:18
+ * @Last Modified time: 2019-07-30 03:45:15
  */
 import React from 'react';
 import { Container, Box, Heading, TextField, Text } from 'gestalt';
@@ -10,7 +10,7 @@ import ToastMessage from './ToastMessage';
 import { getCart, calculatePrice } from '../utils';
 // import Strapi from 'strapi-sdk-javascript/build/main';
 
-// const apiUrl = process.env.API_URL || 'http://localhost:1337';
+// const apiUrl = process.env.API_URL || 'http://localhost:3000';
 // const strapi = new Strapi(apiUrl);
 
 class CheckOut extends React.Component {

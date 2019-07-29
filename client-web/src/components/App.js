@@ -5,7 +5,7 @@ import Loader from './Loader';
 import './App.css';
 import Strapi from 'strapi-sdk-javascript/build/main';
 
-const apiUrl = process.env.API_URL || 'http://localhost:1337';
+const apiUrl = process.env.API_URL || 'http://localhost:3000';
 const strapi = new Strapi(apiUrl);
 
 class App extends Component {

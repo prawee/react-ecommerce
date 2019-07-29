@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-26 03:19:59 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-30 02:38:01
+ * @Last Modified time: 2019-07-30 03:45:25
  */
 import React from 'react';
 import { Container, Box, Button, Heading, Text, TextField } from 'gestalt';
@@ -10,7 +10,7 @@ import { setToken } from '../utils';
 import ToastMessage from './ToastMessage';
 import Strapi from 'strapi-sdk-javascript/build/main';
 
-const apiUrl = process.env.API_URL || 'http://localhost:1337';
+const apiUrl = process.env.API_URL || 'http://localhost:3000';
 const strapi = new Strapi(apiUrl);
 
 class SignUp extends React.Component {

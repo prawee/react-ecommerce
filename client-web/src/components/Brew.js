@@ -2,11 +2,12 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-29 14:27:32 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 20:08:22
+ * @Last Modified time: 2019-07-29 20:15:42
  */
 import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
 import { Box, Heading, Text, Image, Card, Button, Mask, IconButton } from 'gestalt';
+import { calculatePrice } from '../utils';
 import { Link } from 'react-router-dom';
 
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
@@ -184,7 +185,7 @@ class Brew extends React.Component {
                     <Text color="red">Please select some items</Text>
                   )}
                 </Box>
-                <Text size="lg">Total: $3.99</Text>
+                <Text size="lg">Total: {calculatePrice(cartItems)}</Text>
                 <Text>
                   <Link to="/checkout">Checkout</Link>
                 </Text>

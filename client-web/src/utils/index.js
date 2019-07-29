@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-29 20:10:26 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-30 02:21:29
+ * @Last Modified time: 2019-07-30 02:22:57
  */
 const CART_KEY = 'cart';
 const TOKEN_KEY = 'jwt';
@@ -25,6 +25,12 @@ export const getCart = (cartKey = CART_KEY) => {
     return JSON.parse(localStorage.getItem(cartKey));
   }
   return [];
+}
+
+export const clearCart = (cartKey = CART_KEY) => {
+  if (localStorage) {
+    localStorage.removeItem(cartKey);
+  }
 }
 
 /** auth */

@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-26 03:19:59 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 22:49:54
+ * @Last Modified time: 2019-07-29 22:54:48
  */
 import React from 'react';
 import { Container, Box, Button, Heading, Text, TextField } from 'gestalt';
@@ -12,7 +12,9 @@ class SignUp extends React.Component {
   state = {
     username: '',
     email: '',
-    password: ''
+    password: '',
+    toast: false,
+    toastMessage: ''
   }
 
   handleChange = ({ event, value }) => {
@@ -24,12 +26,18 @@ class SignUp extends React.Component {
     event.preventDefault();
     
     if (!this.isFormEmpty(this.state)) {
-      console.log('submited');
+      this.showToast('Fill in all fields');
     }
+    console.log('submited');
   }
 
   isFormEmpty = ({ username, email, password }) => {
     return !username || !email || !password;
+  }
+
+  showToast = toastMessage => {
+    this.setState({ toast: true, toastMessage });
+    setTimeout(() => this.setState({ toast: false, toastMessage: '' }), 5000);
   }
 
   render() {

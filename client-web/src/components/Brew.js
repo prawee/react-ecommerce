@@ -2,15 +2,20 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-29 14:27:32 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 14:39:13
+ * @Last Modified time: 2019-07-29 15:21:30
  */
 import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
+import { Box, Heading, Text, Image, Card, Button } from 'gestalt';
 
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
 const strapi = new Strapi(apiUrl);
 
 class Brew extends React.Component {
+  state = {
+    brews: [],
+    brand: ''
+  }
   async componentDidMount() {
     // console.log(this.props.match.params.brandId);
     try {
@@ -33,7 +38,12 @@ class Brew extends React.Component {
           `
         }
       });
-      console.log(response);
+      // console.log(response);
+      this.setState({
+        brews: response.data.brand.brews,
+        brand: response.data.brand.name
+      });
+      console.log(this.state);
     } catch (err) {
       console.error(err);
     }

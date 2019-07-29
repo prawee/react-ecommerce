@@ -2,12 +2,24 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-26 03:19:59 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 22:35:50
+ * @Last Modified time: 2019-07-29 22:44:02
  */
 import React from 'react';
 import { Container, Box, Button, Heading, Text, TextField } from 'gestalt';
 
 class SignUp extends React.Component {
+
+  state = {
+    username: '',
+    email: '',
+    password: ''
+  }
+
+  handleChange = ({ event, value }) => {
+    event.persist();
+    this.setState({ [event.target.name]: value });
+  }
+
   render() {
     return (
       <Container>
@@ -68,6 +80,7 @@ class SignUp extends React.Component {
             />
     
             <Button
+              inline
               color="blue"
               text="Submit"
               type="submit"

@@ -2,11 +2,11 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-29 14:27:32 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 20:01:20
+ * @Last Modified time: 2019-07-29 20:04:11
  */
 import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
-import { Box, Heading, Text, Image, Card, Button, Mask } from 'gestalt';
+import { Box, Heading, Text, Image, Card, Button, Mask, IconButton } from 'gestalt';
 import { Link } from 'react-router-dom';
 
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
@@ -55,7 +55,7 @@ class Brew extends React.Component {
 
   addToCart = brew => {
     const alreadyInCart = this.state.cartItems.findIndex(item => item._id === brew._id);
-    
+
     if (alreadyInCart === -1) {
       const updatedItems = this.state.cartItems.concat({
         ...brew,
@@ -163,6 +163,12 @@ class Brew extends React.Component {
                   <Text>
                     {item.name} x {item.quantity} - ${(item.quantity * item.price).toFixed(2)}
                   </Text>
+                  <IconButton
+                    accessibilityLabel="Delete Item"
+                    icon="cancel"
+                    size="sm"
+                    iconColor="red"
+                  />
                 </Box>
               ))}
               

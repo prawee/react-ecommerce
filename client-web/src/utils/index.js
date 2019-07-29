@@ -2,9 +2,10 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-29 20:10:26 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 22:13:19
+ * @Last Modified time: 2019-07-29 23:25:25
  */
 const CART_KEY = 'cart';
+const TOKEN_KEY = 'jwt';
  
 export const calculatePrice = items => {
   return `$${items
@@ -24,4 +25,11 @@ export const getCart = (cartKey = CART_KEY) => {
     return JSON.parse(localStorage.getItem(cartKey));
   }
   return [];
+}
+
+/** auth */
+export const setToken = (value, tokenKey = TOKEN_KEY) => {
+  if (localStorage) {
+    localStorage.setItem(tokenKey, JSON.stringify(value));
+  }
 }

@@ -2,12 +2,12 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-26 03:20:47 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-30 03:11:33
+ * @Last Modified time: 2019-07-30 03:21:57
  */
 import React from 'react';
-import { Container, Box, Heading, TextField } from 'gestalt';
+import { Container, Box, Heading, TextField, Text } from 'gestalt';
 import ToastMessage from './ToastMessage';
-import { getCart } from '../utils';
+import { getCart, calculatePrice } from '../utils';
 import Strapi from 'strapi-sdk-javascript/build/main';
 
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
@@ -53,7 +53,7 @@ class CheckOut extends React.Component {
   }
   
   render() {
-    const { toast, toastMessage } = this.state;
+    const { toast, toastMessage, cartItems } = this.state;
 
     return (
       <Container>
@@ -64,7 +64,34 @@ class CheckOut extends React.Component {
           shape="rounded"
           display="flex"
           justifyContent="center"
+          alignItems="center"
+          direction="column"
         >
+          {/* Checkout Form Heading */}  
+          <Heading color="midnight">Checkout</Heading>
+
+          {/* user cart */}
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            direction="column"
+            marginTop={2}
+            marginBottom={6}
+          >
+            <Text color="darkGray" italic>{cartItems.length} for Checkout</Text>
+            <Box padding={2}>
+              {cartItems.map(item =>(
+                <Box key={item._id} padding={1}>
+                  <Text color="midnight">
+                    {item.name} x {item.quantity} - ${item.quantity * item.price}
+                  </Text>
+                </Box>
+              ))}
+            </Box>
+            <Text bold>Total Amount: {calculatePrice(cartItems)}</Text>
+          </Box>
+
           {/* Checkout Form */}
           <form 
             style={{
@@ -74,9 +101,6 @@ class CheckOut extends React.Component {
             }}
             onSubmit={this.handleConfirmOrder}
           >
-            {/* Checkout Form Heading */}  
-            <Heading color="midnight">Checkout</Heading>
-              
             {/* Shipping Address Input */}
             <TextField
               id="address"

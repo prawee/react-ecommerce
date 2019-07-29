@@ -2,11 +2,12 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-26 03:20:47 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-30 03:09:39
+ * @Last Modified time: 2019-07-30 03:11:33
  */
 import React from 'react';
 import { Container, Box, Heading, TextField } from 'gestalt';
 import ToastMessage from './ToastMessage';
+import { getCart } from '../utils';
 import Strapi from 'strapi-sdk-javascript/build/main';
 
 const apiUrl = process.env.API_URL || 'http://localhost:1337';
@@ -15,12 +16,17 @@ const strapi = new Strapi(apiUrl);
 class CheckOut extends React.Component {
 
   state = {
+    cartItems: [],
     address: '',
     postalCode: '',
     city: '',
     confirmationEmailAddress: '',
     toast: false,
     toastMessage: ''
+  }
+
+  componentDidMount() {
+    this.setState({ cartItems: getCart() });
   }
 
   handleChange = ({ event, value }) => {

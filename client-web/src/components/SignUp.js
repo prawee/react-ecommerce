@@ -2,10 +2,11 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-26 03:19:59 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 23:22:45
+ * @Last Modified time: 2019-07-29 23:26:42
  */
 import React from 'react';
 import { Container, Box, Button, Heading, Text, TextField } from 'gestalt';
+import { setToken } from '../utils';
 import ToastMessage from './ToastMessage';
 import Strapi from 'strapi-sdk-javascript/build/main';
 
@@ -47,6 +48,7 @@ class SignUp extends React.Component {
       this.setState({ loading: false });
       // put token (to mange user session) in local storage
       console.log(response);
+      setToken(response.jwt);
       // redirect user to home page
       this.redirectUser('/');
     } catch (err) {
@@ -69,7 +71,7 @@ class SignUp extends React.Component {
   }
 
   render() {
-    const { toastMessage, toast } = this.state;
+    const { toastMessage, toast, loading } = this.state;
 
     return (
       <Container>
@@ -134,6 +136,7 @@ class SignUp extends React.Component {
     
             <Button
               inline
+              disabled={loading}
               color="blue"
               text="Submit"
               type="submit"

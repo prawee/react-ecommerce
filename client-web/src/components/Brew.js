@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-29 14:27:32 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 17:37:21
+ * @Last Modified time: 2019-07-29 17:50:45
  */
 import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
@@ -18,6 +18,7 @@ class Brew extends React.Component {
     brand: '',
     cartItems: []
   }
+  
   async componentDidMount() {
     // console.log(this.props.match.params.brandId);
     try {
@@ -51,6 +52,23 @@ class Brew extends React.Component {
       console.error(err);
     }
   }
+
+  addToCart = brew => {
+    const alreadyInCart = this.state.cartItems.findIndex(item => item._id === brew);
+
+    if (alreadyInCart === -1) {
+      const updatedItems = this.state.cartItems.concat({
+        ...brew,
+        quantity: 1
+      });
+      this.setState({ cartItems: updatedItems });
+    } else {
+      const updatedItems = [...this.state.cartItems];
+      updatedItems[alreadyInCart].quantity +=1;
+      this.setState({ cartItems: updatedItems });
+    }
+  }
+
   render() {
     const { brand, brews, cartItems } = this.state;
 

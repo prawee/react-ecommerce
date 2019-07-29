@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-26 03:19:59 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 23:26:42
+ * @Last Modified time: 2019-07-30 02:38:01
  */
 import React from 'react';
 import { Container, Box, Button, Heading, Text, TextField } from 'gestalt';
@@ -47,7 +47,6 @@ class SignUp extends React.Component {
       // set loading false
       this.setState({ loading: false });
       // put token (to mange user session) in local storage
-      console.log(response);
       setToken(response.jwt);
       // redirect user to home page
       this.redirectUser('/');

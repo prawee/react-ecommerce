@@ -2,11 +2,15 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-26 03:19:59 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 23:05:41
+ * @Last Modified time: 2019-07-29 23:22:45
  */
 import React from 'react';
 import { Container, Box, Button, Heading, Text, TextField } from 'gestalt';
 import ToastMessage from './ToastMessage';
+import Strapi from 'strapi-sdk-javascript/build/main';
+
+const apiUrl = process.env.API_URL || 'http://localhost:1337';
+const strapi = new Strapi(apiUrl);
 
 class SignUp extends React.Component {
 
@@ -15,7 +19,8 @@ class SignUp extends React.Component {
     email: '',
     password: '',
     toast: false,
-    toastMessage: ''
+    toastMessage: '',
+    loading: false
   }
 
   handleChange = ({ event, value }) => {
@@ -23,15 +28,36 @@ class SignUp extends React.Component {
     this.setState({ [event.target.name]: value });
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
+    const { username, email, password } = this.state;
     
     if (this.isFormEmpty(this.state)) {
       this.showToast('Fill in all fields');
       return;
     }
-    console.log('submited');
+    
+    // sign up users
+    try {
+      // set loading true
+      this.setState({ loading: true });
+      // make request to register user with strapi
+      const response = await strapi.register(username, email, password);
+      // set loading false
+      this.setState({ loading: false });
+      // put token (to mange user session) in local storage
+      console.log(response);
+      // redirect user to home page
+      this.redirectUser('/');
+    } catch (err) {
+      // set loading to false
+      this.setState({ loading: false });
+      // show error message with toast message
+      this.showToast(err.message);
+    }
   }
+
+  redirectUser = path => this.props.history.push(path);
 
   isFormEmpty = ({ username, email, password }) => {
     return !username || !email || !password;

@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-29 14:27:32 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 17:31:38
+ * @Last Modified time: 2019-07-29 17:32:34
  */
 import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
@@ -130,7 +130,7 @@ class Brew extends React.Component {
         </Box>
 
         {/* User Cart */}
-        <Box marginTop={2} marginLeft={8}>
+        <Box alignSelf="end" marginTop={2} marginLeft={8}>
           <Mask shape="rounded" wash>
             <Box display="flex" direction="column" alignItems="center" padding={2}>
               {/* User Cart Heading */}

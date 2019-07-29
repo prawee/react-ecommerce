@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-29 14:27:32 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 17:31:05
+ * @Last Modified time: 2019-07-29 17:31:38
  */
 import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
@@ -60,7 +60,11 @@ class Brew extends React.Component {
         display="flex"
         justifyContent="center"
         alignItems="start"
-        
+        dangerouslySetInlineStyle={{
+          __style: {
+            flexWrap: 'wrap-reverse'
+          }
+        }}
       >
         {/* Brew Section */}
         <Box display="flex" direction="column" alignItems="center">

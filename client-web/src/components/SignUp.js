@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-26 03:19:59 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 22:44:02
+ * @Last Modified time: 2019-07-29 22:49:54
  */
 import React from 'react';
 import { Container, Box, Button, Heading, Text, TextField } from 'gestalt';
@@ -18,6 +18,18 @@ class SignUp extends React.Component {
   handleChange = ({ event, value }) => {
     event.persist();
     this.setState({ [event.target.name]: value });
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    
+    if (!this.isFormEmpty(this.state)) {
+      console.log('submited');
+    }
+  }
+
+  isFormEmpty = ({ username, email, password }) => {
+    return !username || !email || !password;
   }
 
   render() {
@@ -36,11 +48,14 @@ class SignUp extends React.Component {
           justifyContent="center"
         >
           {/* Sign up Form */}
-          <form style={{
-            display: 'inlineBlock',
-            textAlign: 'center',
-            maxWidth: 450
-          }}>
+          <form 
+            style={{
+              display: 'inlineBlock',
+              textAlign: 'center',
+              maxWidth: 450
+            }}
+            onSubmit={this.handleSubmit}
+          >
           {/* Sign Up Form Heading */}
             <Box
               marginBottom={2}

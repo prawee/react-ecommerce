@@ -2,7 +2,7 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-29 14:27:32 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-29 20:04:11
+ * @Last Modified time: 2019-07-29 20:08:22
  */
 import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
@@ -67,6 +67,11 @@ class Brew extends React.Component {
       updatedItems[alreadyInCart].quantity +=1;
       this.setState({ cartItems: updatedItems });
     }
+  }
+
+  deleteItemFromCart = itemToDeleteId => {
+    const filteredItems = this.state.cartItems.filter(item => item._id !== itemToDeleteId);
+    this.setState({ cartItems: filteredItems });
   }
 
   render() {
@@ -168,6 +173,7 @@ class Brew extends React.Component {
                     icon="cancel"
                     size="sm"
                     iconColor="red"
+                    onClick={() => this.deleteItemFromCart(item._id)}
                   />
                 </Box>
               ))}

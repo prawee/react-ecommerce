@@ -2,10 +2,10 @@
  * @Author: Prawee Wongsa 
  * @Date: 2019-07-26 03:20:50 
  * @Last Modified by: Prawee Wongsa
- * @Last Modified time: 2019-07-30 02:37:19
+ * @Last Modified time: 2019-07-30 03:39:47
  */
 import React from 'react';
-import { Container, Box, Button, Heading, Text, TextField } from 'gestalt';
+import { Container, Box, Button, Heading, TextField } from 'gestalt';
 import { setToken } from '../utils';
 import ToastMessage from './ToastMessage';
 import Strapi from 'strapi-sdk-javascript/build/main';
